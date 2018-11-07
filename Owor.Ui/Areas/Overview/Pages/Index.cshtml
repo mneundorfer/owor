@@ -1,0 +1,49 @@
+﻿@page
+@model Owor.Ui.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Overview";
+}
+
+<h2>Overview</h2>
+
+<div>
+    <h4>This is an overview of all devices found on the w1 bus</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>No. Values</th>
+                <th>Description</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Model.Devices)
+            {
+                <tr>
+                    <td>
+                        @if (device.NoValues < 1)
+                        {
+                            <span><i class='glyphicon glyphicon-info-sign' style="color:#d9534f" title="No values could be read!"></i></span>
+                        }
+                        @Html.DisplayFor(modelItem => device.Id)
+                    </td>
+                    <td>
+                        <span class="badge" style="background-color:#428bca">@Html.DisplayFor(modelItem => device.NoValues)</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => device.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => device.LastRead)
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-deviceId="@device.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="../Owor.Logging.deps" />
+
+  <ItemGroup>
+    <ProjectReference Include="../Owor.Shared/Owor.Shared.csproj" />
+    <ProjectReference Include="../Owor.Core/Owor.Core.csproj" />
+    <ProjectReference Include="../Owor.Api/Owor.Api.csproj" />
+    <ProjectReference Include="../Owor.Ui/Owor.Ui.csproj" />
+    <ProjectReference Include="../Owor.ClientLib/Owor.ClientLib.csproj" />
+    <ProjectReference Include="../Owor.Middleware/Owor.Middleware.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <WwwRoot Include="../Owor.Ui/wwwroot/**"/>  
+  </ItemGroup>
+
+  <Target Name="CopyCustomContent" AfterTargets="BeforeBuild">
+    <Copy SourceFiles="@(WwwRoot)" DestinationFiles="@(WwwRoot->'wwwroot\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>  
+
+  <!-- This copies wwwroot from Owor.Ui to the output of the project (see https://github.com/Microsoft/msbuild/issues/2795) -->
+  <ItemGroup>
+    <None Include="wwwroot/**" Link="wwwroot\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
