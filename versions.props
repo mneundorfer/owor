@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Label="Framework">
+    <DotnetMvcVersion>2.1.3</DotnetMvcVersion>
+    <DotnetExtensionsVersion>2.1.1</DotnetExtensionsVersion>
+  </PropertyGroup>
+</Project>

@@ -4,13 +4,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <Import Project="../versions.props" />
+
   <ItemGroup>
     <ProjectReference Include="../Owor.Shared/Owor.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="$(DotnetMvcVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(DotnetExtensionsVersion)" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-
+  
   <Import Project="../Owor.Logging.deps" />
 
   <ItemGroup>
